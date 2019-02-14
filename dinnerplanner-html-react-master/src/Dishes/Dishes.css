@@ -1,0 +1,18 @@
+#image {
+    height: 200px;
+    width: 200px;
+
+    
+}
+
+#dish {
+
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    display: inline-block;
+}
+
+p {
+    width: 200px;
+}

@@ -3,6 +3,8 @@ import React, { Component } from "react";
 // we can import the model instance directly
 import modelInstance from "../data/DinnerModel";
 import "./Dishes.css";
+import { Link } from "react-router-dom";
+
 
 class Dishes extends Component {
   constructor(props) {
@@ -46,12 +48,20 @@ class Dishes extends Component {
         dishesList = <em>Loading...</em>;
         break;
       case "LOADED":
-        dishesList = this.state.dishes.map(dish => (
-          <li key={dish.id}>{dish.title}</li>
+      
+      dishesList = this.state.dishes.map(dish => (
+          <Link to="/dishdetails">
+          <div id='dish'>
+            <img id= 'image' src={'https://spoonacular.com/recipeImages/' + dish.image} key={dish.id}></img>
+            <p>{dish.title}</p>
+           </div>
+           </Link>
         ));
+        
         break;
       default:
         dishesList = <b>Failed to load data, please try again</b>;
+
         break;
     }
 

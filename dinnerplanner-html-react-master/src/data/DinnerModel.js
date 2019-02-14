@@ -1,8 +1,10 @@
 import ObservableModel from "./ObservableModel";
 
-const BASE_URL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com";
+
+let API_KEY = "3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767"
+const BASE_URL = `http://sunset.nada.kth.se:8080/iprog/group/44`;
 const httpOptions = {
-  headers: { "X-Mashape-Key": "YOUR_API_KEY" }
+  headers: { "X-Mashape-Key": API_KEY }
 };
 
 class DinnerModel extends ObservableModel {
@@ -25,7 +27,13 @@ class DinnerModel extends ObservableModel {
    * @param {number} num
    */
   setNumberOfGuests(num) {
-    this._numberOfGuests = num;
+    if (num < 1) {
+      this._numberOfGuests = 1;
+    }
+    else {
+      this._numberOfGuests = num;
+    }
+    
     this.notifyObservers();
   }
 
