@@ -40,7 +40,7 @@ class Sidebar extends Component {
   render() {
     return (
       <div className="Sidebar">
-        <h3>This is the sidebar</h3>
+        <h3>Sidebar</h3>
         <p>
           People:
           <input

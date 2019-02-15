@@ -51,8 +51,8 @@ class Dishes extends Component {
       
       dishesList = this.state.dishes.map(dish => (
           <Link to="/dishdetails">
-          <div id='dish'>
-            <img id= 'image' src={'https://spoonacular.com/recipeImages/' + dish.image} key={dish.id}></img>
+          <div id='dish' key={dish.id}>
+            <img id='image' src={'https://spoonacular.com/recipeImages/' + dish.image} key={dish.id}></img>
             <p>{dish.title}</p>
            </div>
            </Link>

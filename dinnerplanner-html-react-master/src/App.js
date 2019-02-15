@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import Welcome from "./Welcome/Welcome";
 import modelInstance from "./data/DinnerModel";
 import SelectDish from "./SelectDish/SelectDish";
+import DishDetails from "./DishDetails/DishDetails";
 import "./App.css";
 
 class App extends Component {
@@ -24,6 +25,10 @@ class App extends Component {
           <Route
             path="/search"
             render={() => <SelectDish model={modelInstance} />}
+          />
+          <Route
+            path="/dishdetails"
+            render={() => <DishDetails model={modelInstance}/>}
           />
         </header>
       </div>
