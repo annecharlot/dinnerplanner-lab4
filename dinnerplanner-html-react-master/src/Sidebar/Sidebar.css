@@ -1,0 +1,11 @@
+.Sidebar {
+    border: solid grey;
+    border-width: 1px;
+    width: 250px;
+    padding: 20px;
+}
+
+button {
+    background-color: orange;
+    padding: 10px;
+}

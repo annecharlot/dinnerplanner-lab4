@@ -1,10 +1,29 @@
-#image {
+#detailimage {
     border: solid black;
     height: 300px;
     width: 400px; 
 }
 
-p {
+#preparation {
     width: 500px;
     display: block;
+}
+
+#ingredientscreen{
+    border: solid grey;
+    width: 400px;
+    padding: 30px;
+    float: right;
+}
+
+#totalprice {
+    border: solid grey;
+    width: 150px;
+    padding: 10px;
+}
+
+button {
+    background-color: orange;
+    font-size: 15px;
+    padding: 10px;
 }

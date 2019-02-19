@@ -50,7 +50,7 @@ class Dishes extends Component {
       case "LOADED":
       
       dishesList = this.state.dishes.map(dish => (
-          <Link to="/dishdetails">
+          <Link to={`/dishdetails/${dish.id}`}>
           <div id='dish' key={dish.id}>
             <img id='image' src={'https://spoonacular.com/recipeImages/' + dish.image} key={dish.id}></img>
             <p>{dish.title}</p>
@@ -67,7 +67,6 @@ class Dishes extends Component {
 
     return (
       <div className="Dishes">
-        <h3>Dishes</h3>
         <ul>{dishesList}</ul>
       </div>
     );

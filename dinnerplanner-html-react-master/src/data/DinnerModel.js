@@ -12,6 +12,7 @@ class DinnerModel extends ObservableModel {
     super();
     this._numberOfGuests = 4;
     this.getNumberOfGuests();
+    this.menu = [];
   }
 
   /**
@@ -37,6 +38,28 @@ class DinnerModel extends ObservableModel {
     this.notifyObservers();
   }
 
+  addDishToMenu(new_dish) {
+    for (let dsh of this.menu) {
+      if (dsh.id == new_dish.id){
+        this.menu.splice(this.menu.indexOf(dsh), 1);
+      }
+    }
+      this.menu.push(new_dish);
+      this.notifyObservers();
+}
+
+  getTotalMenuPrice() {
+    var price = 0;
+    for(let dsh of this.menu){
+      price += Math.round(dsh.pricePerServing*this.getNumberOfGuests());
+    }
+    return price;
+  }
+
+  getFullMenu() {
+		return this.menu;
+	}
+
   // API methods
 
   /**
@@ -46,6 +69,18 @@ class DinnerModel extends ObservableModel {
   getAllDishes() {
     const url = `${BASE_URL}/recipes/search`;
     return fetch(url, httpOptions).then(this.processResponse);
+  }
+
+  searchAllDishes(type, filter) {
+    if (filter===null) {
+      const url = `${BASE_URL}/recipes/search?type=${type}`;
+      return fetch(url, httpOptions).then(this.processResponse);
+    }
+
+    else {
+      const url = `${BASE_URL}/recipes/search?type=${type}&query=${filter}`;
+      return fetch(url, httpOptions).then(this.processResponse);
+    }
   }
 
   getDish(id) {
