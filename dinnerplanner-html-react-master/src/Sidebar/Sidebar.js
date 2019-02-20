@@ -60,7 +60,8 @@ class Sidebar extends Component {
         <div>
           
           Menu:{modelInstance.getFullMenu().map(dish => 
-            <p>{dish.title} : {Math.round(dish.pricePerServing*this.state.numberOfGuests)} SEK</p>
+            <p>{dish.title} : {Math.round(dish.pricePerServing*this.state.numberOfGuests)} SEK
+              <button>-</button></p>
             )}
           <div>Totalprice: {modelInstance.getTotalMenuPrice()} SEK</div>
         </div>

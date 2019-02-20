@@ -52,10 +52,17 @@ class DinnerModel extends ObservableModel {
     }
       this.menu.push(new_dish);
      
-        localStorage.setItem('menu', JSON.stringify(this.menu))
+      localStorage.setItem('menu', JSON.stringify(this.menu))
 
       this.notifyObservers();
 }
+
+  removeDishFromMenu(dish) {
+  //TODO Lab 1
+    var menu = this.menu;
+    menu.splice(menu.indexOf(dish), 1);
+    this.notifyObservers();
+  }
 
   getTotalMenuPrice() {
     var price = 0;
