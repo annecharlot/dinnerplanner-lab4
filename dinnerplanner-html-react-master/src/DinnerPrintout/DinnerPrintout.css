@@ -1,0 +1,44 @@
+#instruction {
+    
+    width: 600px;
+}
+
+
+
+#row {
+    display: flex;
+}
+
+#printimage { 
+
+    border: solid grey;
+    height: 200px;
+    width: 300px;
+}
+
+#package {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 50px;
+}
+
+
+#dishoverview {
+  
+    overflow: hidden;
+    width: 50%;
+    margin: 0 auto;
+    float: left;
+
+}
+
+#price {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#DinnerOverview {
+    width: 50%;
+    margin: 0 auto;
+}

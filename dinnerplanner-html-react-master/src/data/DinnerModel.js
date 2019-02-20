@@ -13,6 +13,9 @@ class DinnerModel extends ObservableModel {
     this._numberOfGuests = 1;
     this.getNumberOfGuests();
     this.menu = [];
+    if(localStorage.getItem('menu')) {
+      this.menu = JSON.parse(localStorage.getItem('menu'));
+    }
   }
 
   /**
@@ -48,9 +51,9 @@ class DinnerModel extends ObservableModel {
       }
     }
       this.menu.push(new_dish);
-      if (typeof (Storage) !== "undefined") {
-        localStorage.setItem("menu", JSON.stringify(this.menu))
-      }
+     
+        localStorage.setItem('menu', JSON.stringify(this.menu))
+
       this.notifyObservers();
 }
 
@@ -63,13 +66,7 @@ class DinnerModel extends ObservableModel {
   }
 
   getFullMenu() {
-    var menu = JSON.parse(localStorage.getItem("menu"));
-    if ( menu === null) {
-      menu = [];
-    };
-    console.log(menu);
-    return menu;
-    
+    return this.menu;
 	}
 
   // API methods

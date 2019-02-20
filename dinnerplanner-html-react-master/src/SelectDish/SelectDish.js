@@ -31,13 +31,14 @@ class SelectDish extends Component {
     return (
       <div className="SelectDish">
         {/* We pass the model as property to the Sidebar component */}
-        <div className="row">
+        <div id="searchbar"><SearchBar whenSearch={this.search}/></div>
+        <div id="row">
           <div className="col-md-3">
             <Sidebar model={this.props.model} />
           </div>
           <div className="col-md-9">
-            <div className="row">
-            <SearchBar whenSearch={this.search}/>
+            <div id="row">
+            
             <Dishes model={this.props.model} type={this.state.type} filter={this.state.filter}/>
             </div>
             

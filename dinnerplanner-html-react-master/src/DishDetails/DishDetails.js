@@ -52,7 +52,6 @@ class DishDetails extends Component {
   }
 
   addToMenu = () => {
-    console.log(this.state.dish);
     modelInstance.addDishToMenu(this.state.dish);
   }
 

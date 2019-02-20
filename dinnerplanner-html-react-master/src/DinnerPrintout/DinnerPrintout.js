@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import modelInstance from "../data/DinnerModel";
 import { Link } from "react-router-dom";
 import DinnerHeader from "../DinnerHeader/DinnerHeader";
+import "./DinnerPrintout.css";
 
 
 
@@ -12,10 +13,17 @@ class DinnerPrintout extends Component {
     let menu = modelInstance.getFullMenu();
 
     let dishes = menu.map(dish => (
-        <div>
-            <img id='image' src={dish.image}/>
-            <h3>{dish.title}</h3>
-            <p>{dish.instructions}</p>
+        <div id="printdish">
+            <div id="package">
+              <img id='printimage' src={dish.image}/>
+            </div>
+            
+            
+            <div id="package">
+              <h3>{dish.title}</h3>
+              <p id="instruction">{dish.instructions}</p>
+            </div>
+            
         </div>
     ))
 
@@ -24,11 +32,9 @@ class DinnerPrintout extends Component {
         <div className="DinnerHeader">
           <DinnerHeader model={this.props.model}/>
           </div>
-        <h2>Dinner Printout</h2>
         
         <div className="DinnerPrintout">
-          {dishes}
-            
+          {dishes}   
         </div>
       </div>
     );

@@ -3,6 +3,8 @@ import modelInstance from "../data/DinnerModel";
 import { Link } from "react-router-dom";
 import DinnerHeader from "../DinnerHeader/DinnerHeader";
 import "./DinnerOverview.css"
+import "../DinnerPrintout/DinnerPrintout.css";
+
 
 class DinnerOverview extends Component {
  
@@ -13,7 +15,7 @@ class DinnerOverview extends Component {
     let menu = modelInstance.getFullMenu();
 
     let dishes = menu.map(dish => (
-        <div>
+        <div id="dishoverview">
             <img id='image' src={dish.image}/>
             <h3>{dish.title}</h3>
             <p>{Math.round(dish.pricePerServing * numberOfGuests)} SEK</p>
@@ -25,11 +27,10 @@ class DinnerOverview extends Component {
       <div className="DinnerHeader">
           <DinnerHeader model={this.props.model}/>
           </div>
-        <h2>Dinner Overview</h2>
         
-        <div className="DinnerOverview">
+        <div id="DinnerOverview">
           {dishes}
-          Totalprice: {modelInstance.getTotalMenuPrice()} SEK
+          <p id="price">Totalprice: {modelInstance.getTotalMenuPrice()} SEK</p>
             <Link to="/print">
               <button id="print">Print Full Recipe</button>
             </Link>

@@ -42,6 +42,7 @@ class Sidebar extends Component {
     this.props.model.setNumberOfGuests(e.target.value);
   };
 
+
   render() {
     return (
       <div className="Sidebar">
