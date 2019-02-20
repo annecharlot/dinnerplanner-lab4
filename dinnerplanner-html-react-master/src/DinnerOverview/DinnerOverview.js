@@ -16,7 +16,7 @@ class DinnerOverview extends Component {
         <div>
             <img id='image' src={dish.image}/>
             <h3>{dish.title}</h3>
-            <p>{Math.round(this.state.dish.pricePerServing * numberOfGuests)}</p>
+            <p>{Math.round(dish.pricePerServing * numberOfGuests)}</p>
         </div>
     ))
 

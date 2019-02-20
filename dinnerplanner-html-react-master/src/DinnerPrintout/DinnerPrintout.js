@@ -9,15 +9,13 @@ class DinnerPrintout extends Component {
  
   render() {
     
-    let numberOfGuests = modelInstance.getNumberOfGuests();
-
     let menu = modelInstance.getFullMenu();
 
     let dishes = menu.map(dish => (
         <div>
             <img id='image' src={dish.image}/>
             <h3>{dish.title}</h3>
-            <p>{Math.round(this.state.dish.pricePerServing * numberOfGuests)}</p>
+            <p>{dish.instructions}</p>
         </div>
     ))
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Sidebar.css";
 import { Link } from "react-router-dom";
-
+import modelInstance from "../data/DinnerModel";
 
 class Sidebar extends Component {
   constructor(props) {
@@ -53,6 +53,12 @@ class Sidebar extends Component {
           <br />
           Total number of guests: {this.state.numberOfGuests}
         </p>
+        <div>
+          Menu:{modelInstance.getFullMenu().map(dish => 
+            <p>{dish.title}</p>
+            )}
+          Totalprice: {modelInstance.getTotalMenuPrice()} SEK
+        </div>
         <Link to="/dinneroverview">
           <button>Confirm Dinner</button>
         </Link>

@@ -27,3 +27,13 @@ button {
     font-size: 15px;
     padding: 10px;
 }
+
+th {
+    padding: 8px;
+    
+}
+table {
+    width:100%;
+    text-align: left;
+    border: solid grey;
+}

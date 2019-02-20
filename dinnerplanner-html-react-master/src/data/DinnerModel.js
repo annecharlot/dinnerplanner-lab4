@@ -1,6 +1,7 @@
 import ObservableModel from "./ObservableModel";
 
 
+
 const BASE_URL = `http://sunset.nada.kth.se:8080/iprog/group/44`;
 const httpOptions = {
   headers: { "X-Mashape-Key": API_KEY }
@@ -9,7 +10,7 @@ const httpOptions = {
 class DinnerModel extends ObservableModel {
   constructor() {
     super();
-    this._numberOfGuests = 4;
+    this._numberOfGuests = 1;
     this.getNumberOfGuests();
     this.menu = [];
   }
@@ -29,21 +30,24 @@ class DinnerModel extends ObservableModel {
   setNumberOfGuests(num) {
     if (num < 1) {
       this._numberOfGuests = 1;
+      this.notifyObservers();
     }
     else {
       this._numberOfGuests = num;
+      this.notifyObservers();
     }
-    
-    this.notifyObservers();
+  
   }
 
   addDishToMenu(new_dish) {
+    console.log(new_dish)
     for (let dsh of this.menu) {
       if (dsh.id == new_dish.id){
         this.menu.splice(this.menu.indexOf(dsh), 1);
       }
     }
       this.menu.push(new_dish);
+      console.log(this.menu)
       this.notifyObservers();
 }
 

@@ -45,9 +45,6 @@ class App extends Component {
       </div>
     );
 
-    const props = ({ match }) => (
-      <div>{match.props.dishId}</div>
-    )
   }
 }
 

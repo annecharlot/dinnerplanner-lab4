@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import modelInstance from "../data/DinnerModel";
+import Observer from "../data/ObservableModel";
 import "./Dishdetails.css";
 import { Link } from "react-router-dom";
 
@@ -25,8 +26,11 @@ class DishDetails extends Component {
       componentDidMount() {
     // when data is retrieved we update the state
     // this will cause the component to re-render
+  
+    this.props.model.addObserver(this);
     modelInstance
-      .getDish(this.state.id)
+    
+    .getDish(this.state.id)
       .then(dish => {
         this.setState({
           status: "LOADED",
@@ -38,12 +42,18 @@ class DishDetails extends Component {
           status: "ERROR"
         });
       });
+      
   }
   
   update() {
     this.setState({
       numberOfGuests: this.props.model.getNumberOfGuests()
     })
+  }
+
+  addToMenu = () => {
+    console.log(this.state.dish);
+    modelInstance.addDishToMenu(this.state.dish);
   }
 
   render() {
@@ -53,7 +63,7 @@ class DishDetails extends Component {
     let preparation = null;
     let ingredients = null;
     let totalprice = null;
-
+    
     // depending on the state we either generate
     // useful message to the user or show the list
     // of returned dishes
@@ -68,14 +78,15 @@ class DishDetails extends Component {
       preparation = <p id="preparation">{this.state.dish.instructions}</p>
     
       ingredients = this.state.dish.extendedIngredients.map(ing => (
-        <div>
-            <p>{Math.round(ing.measures.metric.amount * this.state.numberOfGuests)}{ing.measures.metric.unitShort} {ing.originalName}</p>
-            <div>{this.state.numberOfGuests} SEK</div>
-        </div>  
+
+            <tr>
+              <th>{Math.round(ing.measures.metric.amount * this.state.numberOfGuests)} {ing.measures.metric.unitShort}</th>
+              <th>{ing.originalName}</th>
+              <th>{this.state.numberOfGuests} SEK</th>
+            </tr>
       ));
 
       totalprice = Math.round(this.state.dish.pricePerServing * this.state.numberOfGuests); 
-        
         
         break;
       default:
@@ -86,16 +97,16 @@ class DishDetails extends Component {
 
 
     return (
-      <div class="row">
+      <div className="row">
         <h2>DISH DETAILS</h2>
         
-        <div class="col-md-2">
+        <div className="col-md-2">
           <div className="Sidebardetail">
             <Sidebar model={this.props.model}/>
            </div>
         </div>
         
-        <div class="col-xs-12 col-md-5">
+        <div className="col-xs-12 col-md-5">
           <div id="DishDetails">
             <h3>{dishtitle}</h3>
             <ul>{dishimage}</ul>
@@ -106,14 +117,14 @@ class DishDetails extends Component {
           </div>
         </div>
 
-        <div class="col-xs-12 col-md-5">
+        <div className="col-xs-12 col-md-5">
           <div id="ingredientscreen">
-              <h4>Ingredients: </h4>
-              {ingredients}
-              Number of Guests: {this.state.numberOfGuests}
+              <h3>Ingredients for {this.state.numberOfGuests} People: </h3>
+              <table>{ingredients}</table>
+              
               <div id="totalprice">Totalprice: {totalprice} SEK</div>
               <Link to="/search">
-                <button>Add to Menu</button>
+                <button onClick={this.addToMenu}>Add to Menu</button>
               </Link> 
             </div>  
         </div>
