@@ -97,8 +97,7 @@ class DishDetails extends Component {
 
 
     return (
-      <div className="row">
-        <h2>DISH DETAILS</h2>
+      <div id="row">
         
         <div className="col-md-2">
           <div className="Sidebardetail">
@@ -108,7 +107,7 @@ class DishDetails extends Component {
         
         <div className="col-xs-12 col-md-5">
           <div id="DishDetails">
-            <h3>{dishtitle}</h3>
+            <h3 id="title">{dishtitle}</h3>
             <ul>{dishimage}</ul>
             <p>{preparation}</p>
             <Link to="/search">

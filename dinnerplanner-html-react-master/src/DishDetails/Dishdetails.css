@@ -9,11 +9,20 @@
     display: block;
 }
 
+#title{
+    text-align: center;
+}
+
 #ingredientscreen{
     border: solid grey;
     width: 400px;
     padding: 30px;
     float: right;
+}
+
+#DishDetails {
+    padding-right: 50px;
+    display: block;
 }
 
 #totalprice {
@@ -35,5 +44,8 @@ th {
 table {
     width:100%;
     text-align: left;
-    border: solid grey;
+}
+
+#row{
+display: flex;
 }

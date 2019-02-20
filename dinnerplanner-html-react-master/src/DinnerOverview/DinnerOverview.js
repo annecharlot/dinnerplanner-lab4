@@ -16,7 +16,7 @@ class DinnerOverview extends Component {
         <div>
             <img id='image' src={dish.image}/>
             <h3>{dish.title}</h3>
-            <p>{Math.round(dish.pricePerServing * numberOfGuests)}</p>
+            <p>{Math.round(dish.pricePerServing * numberOfGuests)} SEK</p>
         </div>
     ))
 
@@ -29,7 +29,7 @@ class DinnerOverview extends Component {
         
         <div className="DinnerOverview">
           {dishes}
-    
+          Totalprice: {modelInstance.getTotalMenuPrice()} SEK
             <Link to="/print">
               <button id="print">Print Full Recipe</button>
             </Link>

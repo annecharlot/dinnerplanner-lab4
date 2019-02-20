@@ -3,6 +3,7 @@ import "./Sidebar.css";
 import { Link } from "react-router-dom";
 import modelInstance from "../data/DinnerModel";
 
+
 class Sidebar extends Component {
   constructor(props) {
     super(props);
@@ -11,11 +12,13 @@ class Sidebar extends Component {
     this.state = {
       numberOfGuests: this.props.model.getNumberOfGuests()
     };
+
   }
 
   // this methods is called by React lifecycle when the
   // component is actually shown to the user (mounted to DOM)
   // that's a good place to setup model observer
+  
   componentDidMount() {
     this.props.model.addObserver(this);
   }
@@ -54,10 +57,11 @@ class Sidebar extends Component {
           Total number of guests: {this.state.numberOfGuests}
         </p>
         <div>
+          
           Menu:{modelInstance.getFullMenu().map(dish => 
-            <p>{dish.title}</p>
+            <p>{dish.title} : {Math.round(dish.pricePerServing*this.state.numberOfGuests)} SEK</p>
             )}
-          Totalprice: {modelInstance.getTotalMenuPrice()} SEK
+          <div>Totalprice: {modelInstance.getTotalMenuPrice()} SEK</div>
         </div>
         <Link to="/dinneroverview">
           <button>Confirm Dinner</button>

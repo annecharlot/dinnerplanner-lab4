@@ -20,7 +20,7 @@ class DinnerModel extends ObservableModel {
    * @returns {number}
    */
   getNumberOfGuests() {
-    return this._numberOfGuests;
+    return localStorage.getItem("numberOfGuests");
   }
 
   /**
@@ -30,24 +30,27 @@ class DinnerModel extends ObservableModel {
   setNumberOfGuests(num) {
     if (num < 1) {
       this._numberOfGuests = 1;
+      localStorage.setItem("numberOfGuests", this._numberOfGuests)
       this.notifyObservers();
     }
     else {
       this._numberOfGuests = num;
+      localStorage.setItem("numberOfGuests", this._numberOfGuests)
       this.notifyObservers();
     }
   
   }
 
   addDishToMenu(new_dish) {
-    console.log(new_dish)
     for (let dsh of this.menu) {
       if (dsh.id == new_dish.id){
         this.menu.splice(this.menu.indexOf(dsh), 1);
       }
     }
       this.menu.push(new_dish);
-      console.log(this.menu)
+      if (typeof (Storage) !== "undefined") {
+        localStorage.setItem("menu", JSON.stringify(this.menu))
+      }
       this.notifyObservers();
 }
 
@@ -60,7 +63,13 @@ class DinnerModel extends ObservableModel {
   }
 
   getFullMenu() {
-		return this.menu;
+    var menu = JSON.parse(localStorage.getItem("menu"));
+    if ( menu === null) {
+      menu = [];
+    };
+    console.log(menu);
+    return menu;
+    
 	}
 
   // API methods

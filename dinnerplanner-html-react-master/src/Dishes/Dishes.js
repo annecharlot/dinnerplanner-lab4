@@ -22,8 +22,13 @@ class Dishes extends Component {
   componentDidMount() {
     // when data is retrieved we update the state
     // this will cause the component to re-render
+    this.update(this.props.type, this.props.filter);
+    
+  }
+
+  update(type, filter) {
     modelInstance
-      .getAllDishes()
+      .searchAllDishes(type, filter)
       .then(dishes => {
         this.setState({
           status: "LOADED",
@@ -35,6 +40,14 @@ class Dishes extends Component {
           status: "ERROR"
         });
       });
+  }
+  
+  componentWillReceiveProps = (props) => {
+    // when data is retrieved we update the state
+    // this will cause the component to re-render
+     
+    this.update(props.type, props.filter);
+  
   }
 
   render() {
