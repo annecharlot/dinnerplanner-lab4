@@ -42,6 +42,9 @@ class Sidebar extends Component {
     this.props.model.setNumberOfGuests(e.target.value);
   };
 
+  removeFromMenu = (dish) => {
+    modelInstance.removeDishFromMenu(dish);
+  }
 
   render() {
     return (
@@ -61,7 +64,7 @@ class Sidebar extends Component {
           
           Menu:{modelInstance.getFullMenu().map(dish => 
             <p>{dish.title} : {Math.round(dish.pricePerServing*this.state.numberOfGuests)} SEK
-              <button>-</button></p>
+              <button onClick={() => this.removeFromMenu(dish)}>-</button></p>
             )}
           <div>Totalprice: {modelInstance.getTotalMenuPrice()} SEK</div>
         </div>

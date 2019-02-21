@@ -1,7 +1,6 @@
 import ObservableModel from "./ObservableModel";
 
 
-
 const BASE_URL = `http://sunset.nada.kth.se:8080/iprog/group/44`;
 const httpOptions = {
   headers: { "X-Mashape-Key": API_KEY }
@@ -61,6 +60,7 @@ class DinnerModel extends ObservableModel {
   //TODO Lab 1
     var menu = this.menu;
     menu.splice(menu.indexOf(dish), 1);
+    localStorage.setItem("menu", JSON.stringify(this.menu))
     this.notifyObservers();
   }
 
