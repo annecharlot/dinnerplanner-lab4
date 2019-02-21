@@ -49,7 +49,7 @@ class Sidebar extends Component {
   render() {
     return (
       <div className="Sidebar">
-        <h3>Sidebar</h3>
+        <h3>My Dinner</h3>
         <p>
           People:
           <input
@@ -57,16 +57,15 @@ class Sidebar extends Component {
             value={this.state.numberOfGuests}
             onChange={this.onNumberOfGuestsChanged}
           />
-          <br />
-          Total number of guests: {this.state.numberOfGuests}
+          
         </p>
         <div>
           
-          Menu:{modelInstance.getFullMenu().map(dish => 
+          <b>Menu:</b>{modelInstance.getFullMenu().map(dish => 
             <p>{dish.title} : {Math.round(dish.pricePerServing*this.state.numberOfGuests)} SEK
               <button onClick={() => this.removeFromMenu(dish)}>-</button></p>
             )}
-          <div>Totalprice: {modelInstance.getTotalMenuPrice()} SEK</div>
+          <div><b>Totalprice: </b>{modelInstance.getTotalMenuPrice()} SEK</div>
         </div>
         <Link to="/dinneroverview">
           <button>Confirm Dinner</button>
